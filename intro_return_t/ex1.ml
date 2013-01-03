@@ -20,7 +20,6 @@ let int_of_string s =
     | Failure _ ->
       raise (Int_of_string s)
 
-
 let parse_name name =
   match String.lsplit2 ~on:' ' name with
     | Some (first_name, last_name) ->
