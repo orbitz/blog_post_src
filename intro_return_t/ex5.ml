@@ -23,10 +23,9 @@ let parse_age age =
     ~error:(`Bad_age age)
 
 let parse_zip zip =
-  if String.length zip = 5 && int_of_string zip <> None then
-    Ok zip
-  else
-    Error (`Bad_zip zip)
+  match int_of_string zip with
+  | Some _ when String.length zip = 5 -> Ok zip
+  | _ -> Error (`Bad_zip zip)
 
 let parse_person s =
   match String.split ~on:'\t' s with
